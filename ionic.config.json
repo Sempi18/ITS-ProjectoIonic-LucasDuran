@@ -1,0 +1,7 @@
+{
+  "name": "ITS-ProjectoIonic-LucasDuran",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
