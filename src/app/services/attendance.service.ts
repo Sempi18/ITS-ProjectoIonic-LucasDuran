@@ -41,11 +41,8 @@ export class AttendanceService {
 
   async validateLocation(): Promise<boolean> {
     try {
-      console.log('📍 Mi ubicación actual:', lat, lng);
-      console.log('🎯 Work_Zone:', this.Work_Zone.lat, this.Work_Zone.lng);
-      console.log('📏 Distancia calculada:', distance);
-      console.log('✅ ¿Dentro del área?:', distance <= this.Work_Zone.radio);
       await Geolocation.requestPermissions();
+
       const position = await Geolocation.getCurrentPosition({
         enableHighAccuracy: true,
         timeout: 30000,
@@ -55,6 +52,11 @@ export class AttendanceService {
       const lng = position.coords.longitude;
 
       const distance = this.calculateDistance(lat, lng);
+
+      console.log('📍 Mi ubicación actual:', lat, lng);
+      console.log('🎯 Work_Zone:', this.Work_Zone.lat, this.Work_Zone.lng);
+      console.log('📏 Distancia calculada:', distance, 'metros');
+      console.log('✅ ¿Dentro del área?:', distance <= this.Work_Zone.radio);
 
       return distance <= this.Work_Zone.radio;
     } catch (error) {
@@ -121,4 +123,3 @@ export class AttendanceService {
     return (degrees * Math.PI) / 180;
   }
 }
-alert(`Lat: ${lat}, Lng: ${lng}, Distancia: ${distance} m`);
