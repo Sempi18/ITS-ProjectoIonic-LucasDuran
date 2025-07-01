@@ -1,39 +1,36 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Historial de Asistencia</ion-title>
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center">Historial</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="GoHome()">
+      <ion-button (click)="GoHome()" fill="clear" color="dark">
         <ion-icon name="arrow-back-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding dark-content">
   <div *ngIf="records.length === 0" class="ion-text-center ion-margin-top">
     <ion-text color="medium">
-      <p>No tienes registros de asistencia aún.</p>
+      <p>No tienes registros aún.</p>
     </ion-text>
   </div>
 
-  <ion-list *ngIf="records.length > 0">
-    <ion-item *ngFor="let records of records" lines="full">
+  <ion-list *ngIf="records.length > 0" class="dark-list">
+    <ion-item *ngFor="let records of records" lines="full" class="dark-item">
       <ion-avatar slot="start">
         <img [src]="records.pic || 'https://via.placeholder.com/64'" />
       </ion-avatar>
       <ion-label>
-        <h2>{{ records.type === 'Entrance' ? 'Entrance' : 'Departure' }}</h2>
+        <h2>{{ records.type === 'Entrance' ? 'Entrada' : 'Salida' }}</h2>
         <h3>{{ records.timestamp | date:'short' }}</h3>
-        <p
-          *ngIf="records.location?.lat != null && records.location?.lng != null"
-        >
-          {{ records.location?.lat?.toFixed(5) }}, {{
-          records.location?.lng?.toFixed(5) }}
+        <p *ngIf="records.location?.lat != null && records.location?.lng != null">
+          {{ records.location?.lat?.toFixed(5) }}, {{ records.location?.lng?.toFixed(5) }}
         </p>
       </ion-label>
       <ion-badge
         slot="end"
-        color="{{ records.type === 'Entrance' ? 'success' : 'danger' }}"
+        [color]="records.type === 'Entrance' ? 'success' : 'danger'"
       >
         {{ records.type }}
       </ion-badge>
