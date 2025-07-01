@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AttendanceService } from '../../services/attendance.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { NavController } from '@ionic/angular';
-import { Attendance } from  '../../shared/interfaces/attendance'
-
+import { Attendance } from '../../shared/interfaces/attendance.interface'
 @Component({
   selector: 'app-attendance',
   templateUrl: './attendance.page.html',

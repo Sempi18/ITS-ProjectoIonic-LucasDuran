@@ -22,7 +22,7 @@
         <img [src]="records.pic || 'https://via.placeholder.com/64'" />
       </ion-avatar>
       <ion-label>
-        <h2>{{ records.tipo === 'entrada' ? 'Entrada' : 'Salida' }}</h2>
+        <h2>{{ records.type === 'Entrance' ? 'Entrance' : 'Departure' }}</h2>
         <h3>{{ records.timestamp | date:'short' }}</h3>
         <p
           *ngIf="records.location?.lat != null && records.location?.lng != null"
@@ -33,7 +33,7 @@
       </ion-label>
       <ion-badge
         slot="end"
-        color="{{ records.type === 'entrance' ? 'success' : 'danger' }}"
+        color="{{ records.type === 'Entrance' ? 'success' : 'danger' }}"
       >
         {{ records.type }}
       </ion-badge>

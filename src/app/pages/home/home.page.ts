@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { AttendanceService } from '../../services/attendance.service';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { Attendance } from '../../shared/interfaces/attendance.interface';
 import { ToastController } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
-  standalone: false
+  standalone: false,
 })
 export class HomePage {
   successmessage = false;
@@ -22,17 +23,16 @@ export class HomePage {
     private toastController: ToastController,
     private ngZone: NgZone
   ) {}
-
-  async recordattendance(tipo: 'entrance' | 'departure') {
+  async recordattendance(tipo: 'Entrance' | 'Departures'){
     this.ngZone.run(async () => {
-      const accepted = await this.attendanceService.validatelocation();
+      const accepted = await this.attendanceService.validateLocation();
       if (!accepted) {
         this.showToast('No estás dentro del área permitida', 'danger');
         return;
       }
 
       try {
-        const PicBase64 = await this.attendanceService.takePic();
+        const PicBase64 = await this.attendanceService.TakePic();
 
         const user = await this.authService.getCurrentUser();
         if (!user) throw new Error('Usuario no autenticado');
@@ -40,25 +40,26 @@ export class HomePage {
         const position = await Geolocation.getCurrentPosition();
         const location = {
           lat: position.coords.latitude,
-          lng: position.coords.longitude
+          lng: position.coords.longitude,
         };
 
         const newattendance: Attendance = {
           userId: user.uid,
-          type,
+          type: tipo,
           timestamp: new Date(),
           location,
-          pic: picBase64
+          pic: PicBase64,
         };
-        
 
-        await this.attendanceService.recordattendance (newattendance);
+        await this.attendanceService.recordAttendance(newattendance);
         this.successmessage = true;
-        this.showToast('✅ Asistencia registrada con éxito', 'success');
-
+        this.showToast('Asistencia registrada con éxito', 'success');
       } catch (error: any) {
         console.error('Error al registrar asistencia:', error);
-        this.showToast(`Hubo un problema: ${error.message || 'Inténtalo más tarde'}`, 'danger');
+        this.showToast(
+          `Hubo un problema: ${error.message || 'Inténtalo más tarde'}`,
+          'danger'
+        );
       }
     });
   }
@@ -72,13 +73,12 @@ export class HomePage {
       this.navController.navigateRoot('/login');
     });
   }
-
   async showToast(mensaje: string, color: string) {
     const toast = await this.toastController.create({
-      message: message,
+      message: mensaje,
       duration: 3000,
       color: color,
-      position: 'bottom'
+      position: 'bottom',
     });
     await toast.present();
   }
