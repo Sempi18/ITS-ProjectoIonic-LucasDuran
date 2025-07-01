@@ -1,11 +1,11 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyBlC8uJi4NIUSbOU_v_W5H1N18xztBAKp4",
-    authDomain: "asistencia-geolocalizada.firebaseapp.com",
-    projectId: "asistencia-geolocalizada",
-    storageBucket: "asistencia-geolocalizada.firebasestorage.app",
-    messagingSenderId: "272666868387",
-    appId: "1:272666868387:web:b6e5cacf350ce57e2fdd16"
-  }
+    apiKey: 'AIzaSyCuccjTXt7a05ys85JGCe67NGkIvKd4VCM',
+    authDomain: 'its-projectoionic.firebaseapp.com',
+    projectId: 'its-projectoionic',
+    storageBucket: 'its-projectoionic.firebasestorage.app',
+    messagingSenderId: '230328093904',
+    appId: '1:230328093904:web:82bdb15d8bcc48bc59a2d5',
+  },
 };
