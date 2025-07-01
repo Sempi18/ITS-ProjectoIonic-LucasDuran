@@ -15,7 +15,7 @@ export class AttendanceService {
   private Work_Zone = {
     lat: -38.9296,
     lng: -67.9842,
-    radio: 600,
+    radio: 2000,
   };
 
   constructor(
