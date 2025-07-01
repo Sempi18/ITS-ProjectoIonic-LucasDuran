@@ -13,8 +13,8 @@ import { firstValueFrom } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AttendanceService {
   private Work_Zone = {
-    lat: -38.93339,
-    lng: -67.99427,
+    lat: -38.9296,
+    lng: -67.9842,
     radio: 600,
   };
 
