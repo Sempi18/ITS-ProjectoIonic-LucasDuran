@@ -1,0 +1,110 @@
+ion-content {
+    --background: #f5f7fa;
+}
+
+ion-card {
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.01);
+    }
+
+    ion-card-content {
+        padding-top: 8px;
+    }
+
+    ion-item {
+        --background: #ffffff;
+        --border-radius: 12px;
+        margin-bottom: 14px;
+
+        ion-label {
+            font-weight: 500;
+        }
+
+        ion-input {
+            font-size: 1rem;
+        }
+
+        ion-icon.password-toggle {
+            font-size: 1.2rem;
+            color: #999;
+        }
+    }
+
+    ion-button {
+        --border-radius: 16px;
+        font-weight: 500;
+        letter-spacing: 0.4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 12px;
+    }
+}
+
+.icon-header {
+    margin-top: 10px;
+    padding-bottom: 0;
+
+    .icon-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #e0f0ff;
+        border-radius: 50%;
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 8px auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-icon {
+        font-size: 28px;
+        color: var(--ion-color-primary);
+    }
+
+    ion-card-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-top: 4px;
+    }
+
+    ion-card-subtitle {
+        font-size: 1rem;
+        color: #666;
+        margin-top: 4px;
+    }
+}
+
+// Input
+ion-item {
+    --background: #fff;
+    --border-radius: 12px;
+    margin-bottom: 16px;
+
+    ion-label {
+        font-size: 27px;
+        color: #555;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    ion-input {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    ion-icon.password-toggle {
+        font-size: 1.2rem;
+        color: #999;
+    }
+}
+
+// Botones
+ion-button {
+    --border-radius: 16px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
