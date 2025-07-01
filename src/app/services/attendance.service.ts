@@ -43,13 +43,17 @@ export class AttendanceService {
     try {
       await Geolocation.requestPermissions();
 
-      await Geolocation.watchPosition({ enableHighAccuracy: true }, () => {});
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // espera 2 seg
+      const watchId = Geolocation.watchPosition(
+        { enableHighAccuracy: true },
+        () => {} // callback vacío, solo para activar GPS
+      );
+
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       const position = await Geolocation.getCurrentPosition({
         enableHighAccuracy: true,
         timeout: 60000,
       });
-
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
