@@ -1,21 +1,21 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Registro</ion-title>
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center">Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding dark-content">
   <form #registroForm="ngForm">
-    <ion-card>
+    <ion-card class="dark-card">
       <ion-card-header class="ion-text-center icon-header">
-        <div class="icon-wrapper">
-          <ion-icon name="person-add" class="main-icon"></ion-icon>
-        </div>
+        <div class="icon-wrapper"></div>
         <ion-card-title>Crear cuenta</ion-card-title>
+        <ion-card-subtitle>Complete los campos requeridos</ion-card-subtitle>
       </ion-card-header>
+
       <ion-card-content>
-        <ion-item>
-          <ion-label position="stacked">Correo electrónico</ion-label>
+        <ion-item lines="full">
+          <ion-label position="floating">Correo electrónico</ion-label>
           <ion-input
             type="email"
             name="email"
@@ -24,8 +24,8 @@
           ></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-label position="stacked">Contraseña</ion-label>
+        <ion-item lines="full">
+          <ion-label position="floating">Contraseña</ion-label>
           <ion-input
             type="password"
             name="password"
@@ -34,8 +34,8 @@
           ></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-label position="stacked">Confirmar contraseña</ion-label>
+        <ion-item lines="full">
+          <ion-label position="floating">Confirmar contraseña</ion-label>
           <ion-input
             type="password"
             name="confirmPassword"
@@ -48,11 +48,13 @@
           expand="block"
           class="ion-margin-top"
           (click)="register(registroForm)"
-          >Registrarse</ion-button
         >
-        <ion-button expand="block" fill="clear" (click)="loggear()"
-          >Ya tengo una cuenta</ion-button
-        >
+          Registrarse
+        </ion-button>
+
+        <ion-button expand="block" fill="clear" (click)="loggear()">
+          Ya tengo una cuenta
+        </ion-button>
       </ion-card-content>
     </ion-card>
   </form>
