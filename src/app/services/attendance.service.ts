@@ -43,9 +43,11 @@ export class AttendanceService {
     try {
       await Geolocation.requestPermissions();
 
+      await Geolocation.watchPosition({ enableHighAccuracy: true }, () => {});
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // espera 2 seg
       const position = await Geolocation.getCurrentPosition({
         enableHighAccuracy: true,
-        timeout: 30000,
+        timeout: 60000,
       });
 
       const lat = position.coords.latitude;
