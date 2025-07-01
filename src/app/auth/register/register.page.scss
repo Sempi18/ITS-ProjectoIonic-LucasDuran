@@ -109,9 +109,8 @@ ion-button {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.dark-content {
-  --background: #121212;
-  color: #e0e0e0;
+ion-content {
+  --background: #f6f8fa; // Fondo blanco suave
 }
 
 .dark-card {
