@@ -13,9 +13,9 @@ import { firstValueFrom } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AttendanceService {
   private Work_Zone = {
-    lat: -38.9296,
-    lng: -67.9842,
-    radio: 2000,
+    lat: -38.934902,
+    lng: -67.979073,
+    radio: 5000,
   };
 
   constructor(
