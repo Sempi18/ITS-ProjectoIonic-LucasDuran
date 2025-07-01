@@ -15,7 +15,7 @@ export class AttendanceService {
   private Work_Zone = {
     lat: -38.934902,
     lng: -67.979073,
-    radio: 5000,
+    radio: 10000,
   };
 
   constructor(
@@ -41,6 +41,10 @@ export class AttendanceService {
 
   async validateLocation(): Promise<boolean> {
     try {
+      console.log('📍 Mi ubicación actual:', lat, lng);
+      console.log('🎯 Work_Zone:', this.Work_Zone.lat, this.Work_Zone.lng);
+      console.log('📏 Distancia calculada:', distance);
+      console.log('✅ ¿Dentro del área?:', distance <= this.Work_Zone.radio);
       await Geolocation.requestPermissions();
       const position = await Geolocation.getCurrentPosition({
         enableHighAccuracy: true,
@@ -117,3 +121,4 @@ export class AttendanceService {
     return (degrees * Math.PI) / 180;
   }
 }
+alert(`Lat: ${lat}, Lng: ${lng}, Distancia: ${distance} m`);
