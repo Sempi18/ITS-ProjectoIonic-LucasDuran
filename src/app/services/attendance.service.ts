@@ -41,6 +41,7 @@ export class AttendanceService {
 
   async validateLocation(): Promise<boolean> {
     try {
+      await Geolocation.requestPermissions();
       const position = await Geolocation.getCurrentPosition({
         enableHighAccuracy: true,
         timeout: 30000,
