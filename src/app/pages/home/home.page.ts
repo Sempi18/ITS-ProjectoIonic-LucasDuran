@@ -23,7 +23,7 @@ export class HomePage {
     private toastController: ToastController,
     private ngZone: NgZone
   ) {}
-  async recordattendance(tipo: 'Entrance' | 'Departures'){
+  async recordattendance(tipo: 'Entrance' | 'Departures') {
     this.ngZone.run(async () => {
       const accepted = await this.attendanceService.validateLocation();
       if (!accepted) {
@@ -65,7 +65,7 @@ export class HomePage {
   }
 
   irAlHistorial() {
-    this.navController.navigateForward('/historial');
+    this.navController.navigateForward('/attendance');
   }
 
   logout() {

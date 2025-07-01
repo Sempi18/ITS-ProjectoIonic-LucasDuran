@@ -17,7 +17,6 @@
     </ion-card-header>
 
     <ion-card-content class="ion-text-center">
-
       <!-- Botones dentro del card -->
       <ion-button
         expand="block"
@@ -40,22 +39,11 @@
   </ion-card>
 
   <!-- Mensaje de éxito -->
-  <ion-card
-    *ngIf="successmessage"
-    color="success"
-    class="ion-text-center success-card"
-  >
+  <ion-card *ngIf="successmessage">
     <ion-card-content>
       <ion-icon name="checkmark-circle-outline" size="large"></ion-icon>
       <h3>Asistencia registrada</h3>
-      <ion-button
-        expand="block"
-        fill="solid"
-        color="primary"
-        (click)="irAlHistorial()"
-      >
-        Ver Historial
-      </ion-button>
+      <ion-button (click)="irAlHistorial()">Ver historial</ion-button>
     </ion-card-content>
   </ion-card>
 

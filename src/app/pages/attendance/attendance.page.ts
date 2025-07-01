@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AttendanceService } from '../../services/attendance.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { NavController } from '@ionic/angular';
-import { Attendance } from '../../shared/interfaces/attendance.interface'
+import { Attendance } from '../../shared/interfaces/attendance.interface';
 @Component({
   selector: 'app-attendance',
   templateUrl: './attendance.page.html',
   styleUrls: ['./attendance.page.scss'],
-  standalone: false
+  standalone: false,
 })
 export class AttendancePage implements OnInit {
   records: Attendance[] = [];
@@ -32,8 +32,7 @@ export class AttendancePage implements OnInit {
   async loadhistory() {
     if (!this.userId) return;
     try {
-      const data = await this.attendanceService.getUserAttendance
-      (this.userId);
+      const data = await this.attendanceService.getUserAttendance(this.userId);
       this.records = data;
     } catch (error) {
       console.error('Error loading history:', error);
@@ -42,5 +41,4 @@ export class AttendancePage implements OnInit {
   GoHome() {
     this.NavController.navigateRoot('/home');
   }
-
 }

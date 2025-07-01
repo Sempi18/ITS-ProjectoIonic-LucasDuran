@@ -25,14 +25,15 @@ export class AttendanceService {
 
   async TakePic(): Promise<string> {
     try {
-      const image = await Camera.getPhoto({
-        quality: 40,
+      const photo = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
         width: 800,
         height: 600,
         resultType: CameraResultType.Base64,
         source: CameraSource.Camera,
       });
-      return `data:image/jpeg;base64,${image.base64String}`;
+      return `data:image/jpeg;base64,${photo.base64String}`;
     } catch (error) {
       console.error('Error capturing photo:', error);
       throw new Error('The image could not be captured');
@@ -52,17 +53,12 @@ export class AttendanceService {
 
       const position = await Geolocation.getCurrentPosition({
         enableHighAccuracy: true,
-        timeout: 60000,
+        timeout: 30000,
       });
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
       const distance = this.calculateDistance(lat, lng);
-
-      console.log('📍 Mi ubicación actual:', lat, lng);
-      console.log('🎯 Work_Zone:', this.Work_Zone.lat, this.Work_Zone.lng);
-      console.log('📏 Distancia calculada:', distance, 'metros');
-      console.log('✅ ¿Dentro del área?:', distance <= this.Work_Zone.radio);
 
       return distance <= this.Work_Zone.radio;
     } catch (error) {
